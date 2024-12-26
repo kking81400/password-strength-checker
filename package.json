@@ -1,0 +1,19 @@
+{
+  "name": "password-strength-checker",
+  "version": "1.0.0",
+  "description": "A simple library to check the strength of a password",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "password",
+    "strength",
+    "checker"
+  ],
+  "author": "ALI",
+  "license": "MIT",
+  "dependencies": {
+      "password-strength-checker": "^1.1.1"
+  }
+}

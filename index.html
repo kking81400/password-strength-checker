@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Strength Checker Form</title>
+    <style>
+      /* Basic styles */
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f7f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      /* Form container styling */
+      .form-container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      label {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+      }
+
+      /* Focus effect for password input */
+      input[type="password"]:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Button hover effect */
+      button:hover {
+        background-color: #45a049;
+      }
+
+      /* Password strength message styling */
+      .strength-meter {
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      /* Different strength levels with respective colors */
+      .very-weak {
+        color: red;
+      }
+
+      .weak {
+        color: orange;
+      }
+
+      .medium {
+        color: yellowgreen;
+      }
+
+      .strong {
+        color: green;
+      }
+
+      .very-strong {
+        color: darkgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Password Strength Checker Form</h2>
+      <form id="password-form">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <div
+          id="strength-message"
+          class="strength-meter"
+          aria-live="polite"
+        ></div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <!-- Link to password strength checker library -->
+    <script src="password-strength-checker.js"></script>
+    <script>
+      // Select elements
+      const passwordInput = document.getElementById("password");
+      const strengthMessage = document.getElementById("strength-message");
+
+      // Check password strength using the library
+      passwordInput.addEventListener("input", function () {
+        const password = passwordInput.value;
+        const result = checkPasswordStrength(password);
+
+        // Display the password strength message
+        strengthMessage.textContent = result.strengthMessage;
+
+        // Add the appropriate class for color-coding
+        strengthMessage.className =
+          "strength-meter " +
+          result.strengthMessage.toLowerCase().replace(" ", "-");
+      });
+    </script>
+  </body>
+</html>
